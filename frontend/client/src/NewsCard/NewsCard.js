@@ -1,80 +1,47 @@
-import './NewsPanel.css'
+import './NewsCard.css'
 import React from 'react'
-import NewsCard from '../NewsCard/NewsCard'
 
-class NewsPanel extends React.Component{
+class NewsCard extends React.Component{
     constructor(){
         super();
         this.state = {news:null};
+    }
+    redirectToUrl(url) {
+        window.open(url, '_blank')
     }
 
     componentDidMount(){
         this.loadMoreNews();
     }
-    loadMoreNews(e){
-        this.setState({
-            news:[
-                {'url': 'https://us.cnn.com/2018/12/21/investing/china-stocks-versus-wall-street/index.html',
-                'title': "Think Wall Street's had a bad year? China's was even worse",
-                'description': "The recent turbulence in US stock markets pales in comparison with China's dismal 2018.",
-                'source': 'cnn',
-                'urlToImage': "//cdn.cnn.com/cnnnext/dam/assets/181219182135-zuckerberg-hill-exlarge-169.jpg",
-                'digest': '',
-                'reason': 'Recommend'
-                },
-                {'url': 'https://us.cnn.com/2018/12/21/investing/china-stocks-versus-wall-street/index.html',
-                'title': "Think Wall Street's had a bad year? China's was even worse",
-                'description': "The recent turbulence in US stock markets pales in comparison with China's dismal 2018.",
-                'source': 'cnn',
-                'urlToImage': "//cdn.cnn.com/cnnnext/dam/assets/181219182135-zuckerberg-hill-exlarge-169.jpg",
-                'digest': '',
-                'reason': 'Recommend'
-                },
-                {'url': 'https://us.cnn.com/2018/12/21/investing/china-stocks-versus-wall-street/index.html',
-                'title': "Think Wall Street's had a bad year? China's was even worse",
-                'description': "The recent turbulence in US stock markets pales in comparison with China's dismal 2018.",
-                'source': 'cnn',
-                'urlToImage': "//cdn.cnn.com/cnnnext/dam/assets/181219182135-zuckerberg-hill-exlarge-169.jpg",
-                'digest': '',
-                'reason': 'Recommend'
-                },
-
-
-            ]
-        })
+    loadMoreNews(){
+      
     }
-
-    renderNews(){
-        var news_list = this.state.news.map(function(news) {
-            return (
-                <a className='list-group-item' key={news.digest} href='#'>
-                    <NewsCard news = {news} />
-                </a>
-            );
-        });
-        
-        return (
-            <div className="container-fluid">
-                <div className='list-group'>
-                    {news_list}
-                </div>
-            </div>
+    render() {
+        return(
+         <div className="news-container" onClick={(event) => this.redirectToUrl(this.props.news.url, event)}>
+           <div className='row'>
+               <div className='col s4 fill'>
+               <img src={this.props.news.urlToImage} alt='news'/>
+               </div>
+               <div className="col s8">
+                  <div className="news-intro-col">
+                    <div className="news-intro-panel">
+                     <h4>{this.props.news.title}</h4>
+                     <div className="news-description">
+                     <p>{this.props.news.description}</p>
+                       <div>
+                          {this.props.news.source != null && <div className='chip light-blue news-chip'>{this.props.news.source}</div>}
+                          {this.props.news.reason != null && <div className='chip light-green news-chip'>{this.props.news.reason}</div>}
+                          {this.props.news.time != null && <div className='chip amber news-chip'>{this.props.news.time}</div>}
+                       </div>
+                     </div>
+                    </div>
+                  </div>
+               </div>
+           </div>
+         </div>
         );
-    }
-    render(){
-        if(this.state.news) {
-            return (
-                <div>
-                    {this.renderNews()}
-                </div>
-            );
-        } else {
-            return (
-                <div>loading...</div>
-            )
-        }
-
     }
 }
 
-export default NewsPanel
+export default NewsCard
