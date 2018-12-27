@@ -1,30 +1,43 @@
 import './NewsPanel.css'
 import React from 'react'
 import NewsCard from '../NewsCard/NewsCard'
+import _ from 'lodash';
+
 
 class NewsPanel extends React.Component{
     constructor(){
         super();
         this.state = {news:null};
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount(){
         this.loadMoreNews();
+        this.loadMoreNews =  _.debounce(this.loadMoreNews,1000)
+        window.addEventListener('scroll', this.handleScroll)
     }
+
+    handleScroll() {
+        const scrollY = window.scrollY
+            || window.pageYOffset
+            || document.documentElement.scrollYTop;
+        if((window.innerHeight + scrollY) >= (document.body.offsetHeight - 50)) {
+            console.log('Loading more news!');
+            this.loadMoreNews();
+        }
+    }
+
     loadMoreNews(e){
-        this.setState({
-            news:[
-                {'url': 'https://us.cnn.com/2018/12/21/investing/china-stocks-versus-wall-street/index.html',
-                'title': "Think Wall Street's had a bad year? China's was even worse",
-                'description': "The recent turbulence in US stock markets pales in comparison with China's dismal 2018.",
-                'source': 'cnn',
-                'urlToImage': "//cdn.cnn.com/cnnnext/dam/assets/181219182135-zuckerberg-hill-exlarge-169.jpg",
-                'digest': '',
-                'reason': 'Recommend'
-                }
-            
-            ]
-        })
+        let request = new Request('http://localhost:3001/news', {
+            method: 'GET',
+            cache: false
+        });
+        console.log('执行loadMore')
+        fetch(request)
+            .then((res) => res.json())
+            .then((news) => {
+                this.setState({ news: this.state.news ? this.state.news.concat(news) : news})
+            })
     }
 
     renderNews(){
