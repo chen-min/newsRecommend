@@ -28,11 +28,10 @@ class NewsPanel extends React.Component{
     }
 
     loadMoreNews(e){
+        console.log('111')
         let request = new Request('http://localhost:3001/news', {
             method: 'GET',
-            cache: false
         });
-        console.log('执行loadMore')
         fetch(request)
             .then((res) => res.json())
             .then((news) => {
