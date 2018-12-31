@@ -2,8 +2,7 @@
 # coding: utf-8
 
 import pyjsonrpc
-
-SERVER_HOST = 'localhost'
+SERVER_HOST = 'localhost' 
 SERVER_PORT = 4040
 
 class RequestHandler(pyjsonrpc.HttpRequestHandler):
