@@ -21,10 +21,12 @@ class RequestHandler(pyjsonrpc.HttpRequestHandler):
 
     @pyjsonrpc.rpcmethod
     def getNewsSummariesForUser(self, user_id, page_num):
-        # db = mongodb_client.get_db()
-        # news = list(db['news'].find()) 
-        # return json.loads(dumps(news))
-        return operations.getNewsSummariesForUser(user_id, page_num)
+        db = mongodb_client.get_db()
+        print(db,'dbs')
+        news = list(db['news'].find()) 
+        print(news,"news123")
+        return json.loads(dumps(news))
+        # return operations.getNewsSummariesForUser(user_id, page_num)
 
 
 http_server = pyjsonrpc.ThreadingHttpServer(

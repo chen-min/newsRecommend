@@ -2,12 +2,14 @@ import './NewsPanel.css'
 import React from 'react'
 import NewsCard from '../NewsCard/NewsCard'
 import _ from 'lodash';
+import Auth from '../Auth/Auth';
+
 
 
 class NewsPanel extends React.Component{
     constructor(){
         super();
-        this.state = {news:null};
+        this.state = {news:null, pageNume:1, loadedAll:false};
         this.handleScroll = this.handleScroll.bind(this);
     }
 
@@ -28,14 +30,27 @@ class NewsPanel extends React.Component{
     }
 
     loadMoreNews(e){
-        console.log('111')
-        let request = new Request('http://localhost:3001/news', {
+        if(this.state.loadedAll === true){
+            return 
+        }
+
+        let url = 'http://localhost:3001/news/userId/' + Auth.getEmail() + '/pageNum/' + this.state.pageNum;
+
+        let request = new Request(encodeURI(url), {
             method: 'GET',
+            headers: {
+                'Authorization': 'bearer' + Auth.getToken(),
+            },
+            cache: false
         });
         fetch(request)
             .then((res) => res.json())
             .then((news) => {
-                this.setState({ news: this.state.news ? this.state.news.concat(news) : news})
+                if(!news || news.length === 0){
+                    this.setState({loadedAll: true});
+                }
+                this.setState({ news: this.state.news ? this.state.news.concat(news) : news,
+                pageNum: this.state.pageNum + 1})
             })
     }
 
