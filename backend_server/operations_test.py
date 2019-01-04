@@ -1,3 +1,6 @@
+# coding=UTF-8
+
+
 import operations
 
 def test_getOneNews_basic():
@@ -5,8 +8,10 @@ def test_getOneNews_basic():
     print(news)
     assert news is not None
     print("test_getOneNews_basic passed!")
+
 def test_getNewsSummariesForUser_basic():
-    news = operations.getNewsSummariesForUser('test_user', 1)
+    news = operations.getNewsSummariesForUser('chen@123.com', 1)
+    print(news, 'news>>>>单元测试')
     assert len(news) > 0
     print('test_getNewsSummariesForUser_basic passed')
 
@@ -25,6 +30,6 @@ def test_getNewsSummariesForUser_pagination():
 
 
 if __name__ == "__main__":
-    test_getOneNews_basic()
+    # test_getOneNews_basic()
     test_getNewsSummariesForUser_basic()
-    test_getNewsSummariesForUser_pagination()
+    # test_getNewsSummariesForUser_pagination()

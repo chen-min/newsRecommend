@@ -9,7 +9,7 @@ import Auth from '../Auth/Auth';
 class NewsPanel extends React.Component{
     constructor(){
         super();
-        this.state = {news:null, pageNume:1, loadedAll:false};
+        this.state = {news:null, pageNum:1, loadedAll:false};
         this.handleScroll = this.handleScroll.bind(this);
     }
 
@@ -33,13 +33,14 @@ class NewsPanel extends React.Component{
         if(this.state.loadedAll === true){
             return 
         }
+        let url = 'http://localhost:3000/news/userId/' + Auth.getEmail() + '/pageNum/' + this.state.pageNum;
 
-        let url = 'http://localhost:3001/news/userId/' + Auth.getEmail() + '/pageNum/' + this.state.pageNum;
-
+        // let url = 'http://localhost:3001/news/userId/' + Auth.getEmail() + '/pageNum/' + this.state.pageNum;
+        console.log(url, 'url发送请求')
         let request = new Request(encodeURI(url), {
             method: 'GET',
             headers: {
-                'Authorization': 'bearer' + Auth.getToken(),
+                'Authorization': 'bearer ' + Auth.getToken(),
             },
             cache: false
         });

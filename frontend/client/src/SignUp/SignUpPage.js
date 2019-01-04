@@ -24,7 +24,7 @@ class SignUpPage extends React.Component {
 
     processForm(event) {
         event.preventDefault();
-
+        console.log('执行processform')
         const email = this.state.user.email;
         const password = this.state.user.password;
         const confirm_password = this.state.user.confirm_password;

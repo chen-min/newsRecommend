@@ -5,6 +5,7 @@ const validator = require('validator');
 
 router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
+  console.log(validationResult,'validationResult',req.body,'req.body')
   if (!validationResult.success) {
     console.log('validationResult failed');
     return res.status(400).json({
@@ -77,7 +78,7 @@ router.post('/login', (req, res, next) => {
 });
 
 function validateSignupForm(payload) {
-  console.log(payload);
+  
   const errors = {};
   let isFormValid = true;
   let message = '';
