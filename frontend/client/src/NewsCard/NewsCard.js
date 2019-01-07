@@ -1,15 +1,16 @@
 import './NewsCard.css'
 import React from 'react'
+import Auth from '../Auth/Auth';
 
 class NewsCard extends React.Component{
     constructor(){
         super();
         this.state = {news:null};
     }
-    redirectToUrl(url) {
+    redirectToUrl(url, event) {
         event.preventDefault();
         this.sendClickLog();
-        window.open(url, '_blank')
+        window.open(url, '_blank');
     }
     
     sendClickLog() {

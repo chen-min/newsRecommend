@@ -57,7 +57,7 @@ def test_logNewsClickForUser_basic():
     msg = cloudAMQP_client.getMessage()
     assert msg is not None
     print('log_click test passing')
-
+    print(msg, 'msg')
 
 if __name__ == "__main__":
     # test_getOneNews_basic()

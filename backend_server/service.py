@@ -29,7 +29,7 @@ class RequestHandler(pyjsonrpc.HttpRequestHandler):
         return operations.getNewsSummariesForUser(user_id, page_num)
 
     @pyjsonrpc.rpcmethod
-    def log_news_click_for_user(user_id, news_id):
+    def log_news_click_for_user(self, user_id, news_id):
         print("log_news_click_for_user is called with %s and %s" % (user_id, news_id))
         return operations.logNewsClickForUser(user_id, news_id)
 
