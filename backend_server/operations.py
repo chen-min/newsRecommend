@@ -18,7 +18,7 @@ from cloudAMQP_client import CloudAMQPClient
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 
-LOG_CLICKS_TASK_QUEUE_URL = "amqp://bukvmvbg:PtFNv48W5rqDitFCpsr3rX0fsSsd3D97@dinosaur.rmq.cloudamqp.com/bukvmvbg"
+LOG_CLICKS_TASK_QUEUE_URL = "amqp://amqp://wfolwxct:qCi6N--M9TE1b3Sv2FMA2P7ovWRrLvgN@dinosaur.rmq.cloudamqp.com/wfolwxct"
 
 LOG_CLICKS_TASK_QUEUE_NAME = "tap-news-log-clicks-task-queue"
 

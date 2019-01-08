@@ -27,7 +27,7 @@ ALPHA = 0.1
 
 SLEEP_TIME_IN_SECONDS = 1
 
-LOG_CLICKS_TASK_QUEUE_URL = "amqp://bukvmvbg:PtFNv48W5rqDitFCpsr3rX0fsSsd3D97@dinosaur.rmq.cloudamqp.com/bukvmvbg"
+LOG_CLICKS_TASK_QUEUE_URL = "amqpamqp://wfolwxct:qCi6N--M9TE1b3Sv2FMA2P7ovWRrLvgN@dinosaur.rmq.cloudamqp.com/wfolwxct"
 LOG_CLICKS_TASK_QUEUE_NAME = "tap-news-log-clicks-task-queue"
 
 PREFERENCE_MODEL_TABLE_NAME = "user_preference_model"

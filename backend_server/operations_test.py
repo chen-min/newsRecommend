@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__),'./','common'))
 import mongodb_client
 from cloudAMQP_client import CloudAMQPClient
-LOG_CLICKS_TASK_QUEUE_URL = "amqp://bukvmvbg:PtFNv48W5rqDitFCpsr3rX0fsSsd3D97@dinosaur.rmq.cloudamqp.com/bukvmvbg"
+LOG_CLICKS_TASK_QUEUE_URL = "amqp://wfolwxct:qCi6N--M9TE1b3Sv2FMA2P7ovWRrLvgN@dinosaur.rmq.cloudamqp.com/wfolwxct"
 LOG_CLICKS_TASK_QUEUE_NAME = "tap-news-log-clicks-task-queue"
 cloudAMQP_client = CloudAMQPClient(LOG_CLICKS_TASK_QUEUE_URL, LOG_CLICKS_TASK_QUEUE_NAME)
 
