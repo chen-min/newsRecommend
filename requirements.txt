@@ -6,3 +6,10 @@ lxml
 sklearn
 python-dateutil
 newspaper3k
+numpy
+pandas
+redis
+scipy
+sklearn
+tensorflow
+watchdog
